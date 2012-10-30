@@ -1,0 +1,132 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Network Motif Clustering Toolbox</title><meta name="generator" content="MATLAB 7.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2011-06-16"><meta name="DC.source" content="Contents.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>Network Motif Clustering Toolbox</h1><!--introduction--><!--/introduction--><p>The following files are part of the <a href="network_motif_clustering.html">Network Motif Clustering Toolbox v2.0</a>. The full license terms can be found in the file <a href="LICENSE.txt">LICENSE.txt</a> included with this distribution. The documentation for each file is accessible by</p><pre class="codeinput">help <span class="string">function_name</span>;
+</pre><div><ul><li>aggrscore          - Compute aggregation statistic</li></ul></div><div><ul><li>ckdistribution     - Average degree and cluster coefficient distribution</li></ul></div><div><ul><li>clustcoeff         - Clustering coefficient of a network</li></ul></div><div><ul><li>createtensor3      - Create a motif tensor from a list of 3 adjacency matrices</li></ul></div><div><ul><li>edgeswap           - Swap two edges in a randomization procedure</li></ul></div><div><ul><li>matrand            - Randomize a network</li></ul></div><div><ul><li>matrandffl         - Randomize a network keeping number of FFLs constant</li></ul></div><div><ul><li>maximizer3knorm    - Find best rank-1 approximation to a tensor</li></ul></div><div><ul><li>motif3aggregation  - Calculate aggregation significance</li></ul></div><div><ul><li>motif3clust        - Iterative clustering of a 3-dim adjacency tensor</li></ul></div><div><ul><li>motif3cluststat    - Get some statistics from motif3clust output</li></ul></div><div><ul><li>motif3enrich       - Enrichment of a 3-node subgraph in random ensemble</li></ul></div><div><ul><li>perronvector       - Find the Perron vector for a nonnegative symmetric matrix</li></ul></div><div><ul><li>tens3trunc         - Truncate tensor</li></ul></div><div><ul><li>tensmat            - Create matrix from tensor x vector inner product</li></ul></div><div><ul><li>tensmin            - Difference of two tensors</li></ul></div><div><ul><li>tensor3clust       - Iterative clustering of a 3-dim motif tensor</li></ul></div><div><ul><li>tensor3rand        - Randomize a network keeping number of motifs constant</li></ul></div><div><ul><li>tensrand           - Randomize a tensor</li></ul></div><div><ul><li>tenssym            - Symmetrize a tensor</li></ul></div><div><ul><li>tenstrunc          - Truncate tensor</li></ul></div><div><ul><li>unifapprox         - Find best uniform approximation to x in 2-norm sense</li></ul></div><div><ul><li>unifapproxknorm    - Find best uniform approximation to x in 2-norm sense</li></ul></div><p>The following file is included for compatibility reasons between <a href="http://www.mathworks.com">Matlab</a> and <a href="http://www.gnu.org/software/octave/">Octave</a> and is subject to the terms of the <a href="http://www.gnu.org/licenses/gpl.html">GNU GPL License</a>:</p><div><ul><li>intersect2.m</li></ul></div><p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Network Motif Clustering Toolbox
+%%
+% The following files are part of the <network_motif_clustering.html
+% Network Motif Clustering Toolbox v2.0>. The full license terms can be
+% found in the file <LICENSE.txt LICENSE.txt> included with this
+% distribution. The documentation for each file is accessible by
+help function_name;
+%%
+%
+% * aggrscore          - Compute aggregation statistic
+%
+% * ckdistribution     - Average degree and cluster coefficient distribution
+%
+% * clustcoeff         - Clustering coefficient of a network
+%
+% * createtensor3      - Create a motif tensor from a list of 3 adjacency matrices
+% 
+% * edgeswap           - Swap two edges in a randomization procedure
+%
+% * matrand            - Randomize a network
+%
+% * matrandffl         - Randomize a network keeping number of FFLs constant
+%
+% * maximizer3knorm    - Find best rank-1 approximation to a tensor
+%
+% * motif3aggregation  - Calculate aggregation significance
+%
+% * motif3clust        - Iterative clustering of a 3-dim adjacency tensor
+%
+% * motif3cluststat    - Get some statistics from motif3clust output
+%
+% * motif3enrich       - Enrichment of a 3-node subgraph in random ensemble
+%
+% * perronvector       - Find the Perron vector for a nonnegative symmetric matrix
+%
+% * tens3trunc         - Truncate tensor
+%
+% * tensmat            - Create matrix from tensor x vector inner product
+%
+% * tensmin            - Difference of two tensors
+%
+% * tensor3clust       - Iterative clustering of a 3-dim motif tensor
+%
+% * tensor3rand        - Randomize a network keeping number of motifs constant
+%
+% * tensrand           - Randomize a tensor
+%
+% * tenssym            - Symmetrize a tensor
+%
+% * tenstrunc          - Truncate tensor
+%
+% * unifapprox         - Find best uniform approximation to x in 2-norm sense
+% 
+% * unifapproxknorm    - Find best uniform approximation to x in 2-norm sense
+%%
+% The following file is included for compatibility reasons between
+% <http://www.mathworks.com Matlab> and
+% <http://www.gnu.org/software/octave/ Octave> and is subject to the terms
+% of the <http://www.gnu.org/licenses/gpl.html GNU GPL License>:
+%
+% * intersect2.m
+
+##### SOURCE END #####
+--></body></html>
