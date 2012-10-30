@@ -1,0 +1,121 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Network Motif Clustering Toolbox</title><meta name="generator" content="MATLAB 7.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2011-06-17"><meta name="DC.source" content="network_motif_clustering.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>Network Motif Clustering Toolbox</h1><!--introduction--><p>The Network Notif Clustering Toolbox is a toolbox for clustering topological network motifs in large-scale, integrated networks. The clustering algorithm is based on rigorous mathematical results and has been validated on an integrated yeast interaction network. See the following publication for more information:</p><div><ul><li>T. Michoel, A. Joshi, B. Nachtergaele and Y. Van de Peer, <i>Enrichment and aggregation of topological motifs are independent organizational   principles of integrated interaction networks</i> (2011).</li></ul></div><!--/introduction--><p><b>Version 2.0</b> contains functions for</p><div><ul><li><a href="doc/html/network_motif_3_clustering_doc.html">Network motif clustering</a></li></ul></div><div><ul><li><a href="doc/html/network_motif_3_significance_doc.html">Calculating network motif aggregation and enrichment significance</a></li></ul></div><div><ul><li><a href="doc/html/random_networks_doc.html">Generating random networks with fixed degree distribution and fixed motif count</a></li></ul></div><p>A complete list of functions is available from the <a href="Contents.html">Contents</a> file. Before starting, have a quick look at the <a href="doc/html/network_representation_doc.html">Network, tensor and motif representations</a> we use.</p><p><b>Copyright</b> 2011, Tom Michoel</p><p>The full license terms can be found in the file <a href="LICENSE.txt">LICENSE.txt</a> included with this distribution.</p><p><b>Contact</b></p><p>
+Tom Michoel <br/>
+Freiburg Institute for Advanced Studies (FRIAS) <br/>
+University of Freiburg <br/>
+Albertstrasse 19 <br/>
+79104 Freiburg, Germany <br/>
+E-mail: <a href="mailto:tom.michoel@frias.uni-freiburg.de">tom.michoel@frias.uni-freiburg.de</a> <br/>
+URL: <a href="http://omics.frias.uni-freiburg.de">http://omics.frias.uni-freiburg.de</a> <br/>
+</p><p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Network Motif Clustering Toolbox
+% The Network Notif Clustering Toolbox is a toolbox for clustering
+% topological network motifs in large-scale, integrated networks. The
+% clustering algorithm is based on rigorous mathematical results and has
+% been validated on an integrated yeast interaction network. See the
+% following publication for more information:
+% 
+% * T. Michoel, A. Joshi, B. Nachtergaele and Y. Van de Peer,
+% _Enrichment and aggregation of topological motifs are independent organizational
+%   principles of integrated interaction networks_ (2011). 
+%% 
+% *Version 2.0* contains functions for
+% 
+% * <doc/html/network_motif_3_clustering_doc.html Network motif clustering> 
+%
+% * <doc/html/network_motif_3_significance_doc.html Calculating network motif
+% aggregation and enrichment significance>
+% 
+% * <doc/html/random_networks_doc.html Generating random networks with fixed
+% degree distribution and fixed motif count>
+%%
+% A complete list of functions is available from the
+% <Contents.html Contents> file. Before starting, have a quick
+% look at the <doc/html/network_representation_doc.html Network, tensor and motif
+% representations> we use.
+%%
+% *Copyright* 2011, Tom Michoel
+%%
+% The full license terms can be found in the file <LICENSE.txt LICENSE.txt>
+% included with this distribution.
+%%
+% *Contact*
+%%
+%  
+% <html>
+% Tom Michoel <br/>
+% Freiburg Institute for Advanced Studies (FRIAS) <br/>
+% University of Freiburg <br/>
+% Albertstrasse 19 <br/>
+% 79104 Freiburg, Germany <br/>
+% E-mail: <a href="mailto:tom.michoel@frias.uni-freiburg.de">tom.michoel@frias.uni-freiburg.de</a> <br/>
+% URL: <a href="http://omics.frias.uni-freiburg.de">http://omics.frias.uni-freiburg.de</a> <br/>
+% </html>
+% 
+##### SOURCE END #####
+--></body></html>

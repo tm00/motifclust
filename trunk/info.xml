@@ -1,0 +1,25 @@
+<productinfo
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://www.mathworks.com/namespace/info/v1/info.xsd">
+<?xml-stylesheet type="text/xsl" href="http://www.mathworks.com/namespace/info/v1/info.xsl"?>
+
+<matlabrelease>R2008a</matlabrelease>
+<name>Network Motif Clustering</name>
+<type>toolbox</type>
+<icon>$toolbox/matlab/icons/unknownicon.gif</icon>
+<help_location>.</help_location>
+
+<list>
+  <listitem>
+    <label>Help</label>
+    <callback>doc network_motif_clustering</callback>
+    <icon>$toolbox/matlab/icons/webicon.gif</icon>
+  </listitem>
+  <listitem>
+    <label>Author Web Site</label>
+    <callback>web http://www.psb.ugent.be/~tomic</callback>
+    <icon>$toolbox/matlab/icons/webicon.gif</icon>
+  </listitem>
+</list>
+
+</productinfo>

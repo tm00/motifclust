@@ -1,0 +1,134 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Network motif aggregation and enrichment significance</title><meta name="generator" content="MATLAB 7.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2011-06-16"><meta name="DC.source" content="network_motif_3_significance_doc.m"><style type="text/css">
+
+body {
+  background-color: white;
+  margin:10px;
+}
+
+h1 {
+  color: #990000; 
+  font-size: x-large;
+}
+
+h2 {
+  color: #990000;
+  font-size: medium;
+}
+
+/* Make the text shrink to fit narrow windows, but not stretch too far in 
+wide windows. */ 
+p,h1,h2,div.content div {
+  max-width: 600px;
+  /* Hack for IE6 */
+  width: auto !important; width: 600px;
+}
+
+pre.codeinput {
+  background: #EEEEEE;
+  padding: 10px;
+}
+@media print {
+  pre.codeinput {word-wrap:break-word; width:100%;}
+} 
+
+span.keyword {color: #0000FF}
+span.comment {color: #228B22}
+span.string {color: #A020F0}
+span.untermstring {color: #B20000}
+span.syscmd {color: #B28C00}
+
+pre.codeoutput {
+  color: #666666;
+  padding: 10px;
+}
+
+pre.error {
+  color: red;
+}
+
+p.footer {
+  text-align: right;
+  font-size: xx-small;
+  font-weight: lighter;
+  font-style: italic;
+  color: gray;
+}
+
+  </style></head><body><div class="content"><h1>Network motif aggregation and enrichment significance</h1><!--introduction--><p>This file describes how to use the network motif aggregation and enrichment functions of the Network Motif Clustering Toolbox for 3-node network motifs.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Network motif aggregation significance</a></li><li><a href="#3">Network motif enrichment significance</a></li></ul></div><h2>Network motif aggregation significance<a name="1"></a></h2><p>For a given motif, compute its motif tensor T (using <a href="matlab:doc('createtensor3')">createtensor</a>) and generate and ensemble of randomized tensors Trand while keeping the degree distributions and total motif count of the corresponding input networks constant (see <a href="random_networks_doc.html">random network ensembles</a>). Then use:</p><pre class="codeinput">[pval, Z, sreal, srand] = motif3aggregation(T, Trand);
+</pre><p>where sreal and srand are the real and random aggregation statistics used to compute the P-value and Z-score.</p><h2>Network motif enrichment significance<a name="3"></a></h2><p>Network motif enrichment can be easily computed for sets of motifs at a time. We distinguish between the number of 'edge colors' or integrated networks.</p><p><b>One network</b></p><pre class="codeinput">[p,Z,nReal,nRand] = motif3enrich(A,Arand);
+</pre><p><b>Two networks</b></p><pre class="codeinput">[p,Z,nReal,nRand] = motif3enrich(A,B,Arand,Brand);
+</pre><p><b>Three networks</b></p><pre class="codeinput">[p,Z,nReal,nRand] = motif3enrich(A,B,C,Arand,Brand,Crand);
+</pre><p><b>Remarks</b></p><div><ul><li>Arand is an ensemble of random networks (see <a href="random_networks_doc.html">random network ensembles</a>)</li></ul></div><div><ul><li>The function for two networks considers all motifs with at least one edge from each network, but not those with only one edge color that can be computed using the 'one network' variant. Idem for three networks which does not include the output that can be obtained with one or two networks.</li></ul></div><div><ul><li>The number and type of possible motifs is determined by the (a)symmetry of the input matrices. It is assumed that if one matrix is symmetric, so are all the following, so care has to be given to the order of input arguments. The function does not given an error if for instance A is symmetric, but B is not, although the output will not be correct.</li></ul></div><div><ul><li>The output consists of vectors of p-value and Z-scores for each motif. To know which position corresponds to which motif, motif3enrich prints information on the screen when it is called. This information is also available in the help contents of motif3enrich and uses our <a href="network_representation_doc.html">standard motif representation conventions</a>. nReal is the number of  motifs in the real networks and nRand the number of motifs in each of the random networks.</li></ul></div><div><ul><li>The function assumes that all real and random networks have empty diagonal. This is the case if random networks have been generated using the randomnet function. If necessary, remove diagonals using:</li></ul></div><pre class="codeinput">A = A - diag(diag(A));
+</pre><p class="footer"><br>
+      Published with MATLAB&reg; 7.11<br></p></div><!--
+##### SOURCE BEGIN #####
+%% Network motif aggregation and enrichment significance
+% This file describes how to use the network motif aggregation and
+% enrichment functions of the Network Motif Clustering Toolbox for 3-node
+% network motifs. 
+
+%% Network motif aggregation significance
+% For a given motif, compute its motif tensor T (using
+% <matlab:doc('createtensor3') createtensor>) and generate and ensemble of
+% randomized tensors Trand while keeping the degree distributions and total
+% motif count of the corresponding input networks constant (see
+% <random_networks_doc.html random network ensembles>). Then use:
+[pval, Z, sreal, srand] = motif3aggregation(T, Trand);
+%%
+% where sreal and srand are the real and random aggregation statistics used
+% to compute the P-value and Z-score.
+
+%% Network motif enrichment significance
+% Network motif enrichment can be easily computed for sets of motifs at a
+% time. We distinguish between the number of 'edge colors' or integrated
+% networks.
+%%
+% *One network*
+[p,Z,nReal,nRand] = motif3enrich(A,Arand);
+%% 
+% *Two networks*
+[p,Z,nReal,nRand] = motif3enrich(A,B,Arand,Brand);
+%%
+% *Three networks*
+[p,Z,nReal,nRand] = motif3enrich(A,B,C,Arand,Brand,Crand);
+%%
+% *Remarks*
+%
+% * Arand is an ensemble of random networks (see <random_networks_doc.html
+% random network ensembles>)
+%
+% * The function for two networks considers all motifs with at least one
+% edge from each network, but not those with only one edge color that can
+% be computed using the 'one network' variant. Idem for three networks
+% which does not include the output that can be obtained with one or two
+% networks. 
+%
+% * The number and type of possible motifs is determined by the (a)symmetry
+% of the input matrices. It is assumed that if one matrix is symmetric, so
+% are all the following, so care has to be given to the order of input
+% arguments. The function does not given an error if for instance A is
+% symmetric, but B is not, although the output will not be correct.
+%
+% * The output consists of vectors of p-value and Z-scores for each motif.
+% To know which position corresponds to which motif, motif3enrich prints
+% information on the screen when it is called. This information is also
+% available in the help contents of motif3enrich and uses our
+% <network_representation_doc.html standard motif representation
+% conventions>. nReal is the number of  motifs in the real networks and
+% nRand the number of motifs in each of the random networks. 
+%
+% * The function assumes that all real and random networks have empty
+% diagonal. This is the case if random networks have been generated using
+% the randomnet function. If necessary, remove diagonals using:
+A = A - diag(diag(A));
+
+##### SOURCE END #####
+--></body></html>

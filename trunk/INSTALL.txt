@@ -1,0 +1,19 @@
+To install the Network Motif Clustering Toolbox:
+
+1. Start MATLAB or OCTAVE
+
+2. cd to the Network_Motif_Clustering directory where you unpacked the
+   toolbox.
+
+3. Add the toolbox to your path using the commands:
+
+   addpath(pwd); % add to path
+   savepath; % save for future sessions
+
+4. In MATLAB, an entry "Network Motif Clustering Toolbox" is now
+   available in the Help Navigator, containing all necessary
+   information to get you started.
+
+   In Octave, you can access the help information by opening the file
+   Network_Motif_Clustering/network_motif_clustering.html in your
+   favorite web browser.
