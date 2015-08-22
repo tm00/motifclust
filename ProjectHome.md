@@ -1,0 +1,1 @@
+Motifclust is the Network Motif Clustering Toolbox, a Matlab toolbox for clustering topological motifs in integrated networks. See <a href='http://dx.doi.org/10.1039/c1mb05241a'>this publication</a> or contact <a href='http://www.roslin.ed.ac.uk/tom-michoel'>Tom Michoel</a> for further details.
